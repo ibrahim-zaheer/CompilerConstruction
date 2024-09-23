@@ -101,11 +101,11 @@ newNode->prev=NULL;
     }  
     Nodes* temp = head;
     while(temp->next){
-        temp = temp->prev;
-temp = temp->next;
+        temp = temp->next;
+
     }
     temp->next = newNode;
-
+    newNode->prev = temp;
     }
 
     void display(){
@@ -117,7 +117,16 @@ temp = temp->next;
             Nodes* temp = head;
             while (temp)
             {
+                Nodes* prevtemp = temp->prev;
+                cout<<"the current data is"<<endl;
                 cout<<temp->data<<endl;
+                 
+                   if (temp->prev) {
+                cout << "The previous data is: " << temp->prev->data << endl;
+            } else {
+                cout << "This is the head node, no previous data." << endl;
+            }
+
                 temp = temp->next;
             }
             
@@ -132,17 +141,19 @@ temp = temp->next;
 
 int main(){
     LinkedList LL;
+    DoublyLinkedList DLL;
     string c;
+
 for (int i = 0; i < 10; i++)
 {
    cout<<"enter the charcater"<<endl;
     cin>>c;
-    LL.Insert(c);
+    DLL.Insert(c);
 }
 
     
     
-    LL.display();
+    DLL.display();
 }
 
 
