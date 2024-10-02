@@ -1,13 +1,42 @@
+//use array string in RUle struct instead of string r
+
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-struct Prod;
+class Production{
+    private:
+    Production* prev;
+    Production* next;
+    string name;
+  
+
+    Production(const string& ruleString) : name(ruleString),next(NULL),prev(NULL){}
+
+};
+
+// class Ruleing {
+// private:
+//     string r;
+//     Rule* next;
+//     Rule* prev;
+
+// public:
+//     Ruleing(const string& ruleString)
+//         : r(ruleString), next(nullptr), prev(nullptr) {}
+
+//     friend class Prod; // Allow Prod to access private members
+
+//     void print() const {
+//         cout << r << " ";
+//     }
+// };
 
 struct Rule {
     string r;
     Rule* next;
+    // Rule next;
     Rule* prev;
 
     Rule(const string& ruleString)
@@ -18,12 +47,13 @@ struct Prod {
     string name;
     Prod* prev;
     Prod* next;
+     // Rule next;
     Rule* ruleNode;
 
     Prod(const string& nonTerminalName)
         : name(nonTerminalName), prev(nullptr), next(nullptr), ruleNode(nullptr) {}
 };
-
+// void addRule(Prod prod, const string& ruleString) {
 void addRule(Prod* prod, const string& ruleString) {
     Rule* newRule = new Rule(ruleString);
 
@@ -50,20 +80,20 @@ void printRules(Prod* prod) {
 }
 
 int main() {
-    Prod* firstProd = new Prod("S");
-    Prod* secondProd = new Prod("A");
+    // Prod* firstProd = new Prod("S");
+    // Prod* secondProd = new Prod("A");
 
-    addRule(firstProd, "A");
-    addRule(firstProd, "B");
+    // addRule(firstProd, "A");
+    // addRule(firstProd, "B");
 
-    addRule(secondProd, "a");
-    addRule(secondProd, "A");
+    // addRule(secondProd, "a");
+    // addRule(secondProd, "A");
 
-    firstProd->next = secondProd;
-    secondProd->prev = firstProd;
+    // firstProd->next = secondProd;
+    // secondProd->prev = firstProd;
 
-    printRules(firstProd);
-    printRules(secondProd);
+    // printRules(firstProd);
+    // printRules(secondProd);
 
     Prod* headProd = nullptr;
     Prod* currentProd = nullptr;
@@ -92,11 +122,19 @@ int main() {
 
        
         while (true) {
-            cout << "Enter rule for production '" << prodName << "' (or 'q' to stop adding rules): ";
+
+            cout << "Enter the rule for production '" << prodName << "' or 'q' to stop adding rules ";
+            
             getline(cin, ruleString);
 
+
+
             if (ruleString == "q") {
+
+
                 break;
+
+
             }
 
             addRule(currentProd, ruleString);
@@ -107,6 +145,8 @@ int main() {
     Prod* tempProd = headProd;
     while (tempProd) {
         printRules(tempProd);
+
+
         tempProd = tempProd->next;
     }
 
