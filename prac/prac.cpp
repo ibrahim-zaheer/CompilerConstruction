@@ -4,8 +4,6 @@
 using namespace std;
 
 int main() {
-
-    // this is the whole transition table and we use this to represent it
     enum COL { L = 0, D, U, NLDU, A, R, T };
     enum state { f = 0, t };
     enum lu { n = 0, id, op, pun, key };
@@ -25,13 +23,13 @@ int main() {
         return 1;
     }
 
-   
+    // Helper function to classify character
     auto classifyCharacter = [](char c) -> COL {
         if (islower(c)) return L;
         if (isupper(c)) return U;
         if (isdigit(c)) return D;
         if (isspace(c)) return NLDU;
-        return A;  
+        return A;  // Assume anything else is a symbol or special character
     };
 
     // Process each character

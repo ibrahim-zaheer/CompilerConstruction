@@ -1,0 +1,3 @@
+int var1 = 100;
+float _variableName = 200.5;
+float ibrahim = "ibrahim";

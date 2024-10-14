@@ -1,0 +1,15 @@
+you have vector as dynamic array
+learn how to extarct byte by byte from a file
+
+
+
+use auto for making inline functions
+
+// Helper function to classify character
+auto classifyCharacter = [](char c) -> COL {
+    if (islower(c)) return L;  // Lowercase letter
+    if (isupper(c)) return U;  // Uppercase letter
+    if (isdigit(c)) return D;  // Digit
+    if (isspace(c)) return NLDU;  // Whitespace or newline
+    return A;  // Other (symbol or special character)
+};
